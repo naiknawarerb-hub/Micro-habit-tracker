@@ -1,0 +1,385 @@
+:root {
+  --bg: #f4f7f6;
+  --bg-spot: #e8f3ff;
+  --surface: #ffffff;
+  --text: #22313f;
+  --muted: #5f6f7e;
+  --primary: #4caf50;
+  --primary-dark: #3f9743;
+  --accent: #7f9db9;
+  --danger: #de4b4b;
+  --border: #d8e1e5;
+  --shadow: 0 10px 28px rgba(34, 49, 63, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #162029;
+  --bg-spot: #1f2b36;
+  --surface: #22313f;
+  --text: #e6edf3;
+  --muted: #b3c0cc;
+  --primary: #5cc260;
+  --primary-dark: #43ab4a;
+  --accent: #89a9c8;
+  --danger: #f26a6a;
+  --border: #3a4957;
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top right, var(--bg-spot), var(--bg) 55%);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.app-shell {
+  width: min(1150px, 94%);
+  margin: 1.4rem auto 2rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.app-feedback {
+  min-height: 1.2rem;
+  margin: 0.45rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.app-feedback.success {
+  color: var(--primary);
+}
+
+.app-feedback.error {
+  color: var(--danger);
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.panel h2,
+.panel h3 {
+  margin-top: 0;
+}
+
+.full-span {
+  grid-column: 1 / -1;
+}
+
+.stacked-form {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.58rem 0.84rem;
+  background: var(--primary);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: var(--accent);
+}
+
+.btn-secondary:hover {
+  filter: brightness(0.93);
+}
+
+.btn-success {
+  background: var(--primary);
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+.category-list,
+.habit-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.habit-group {
+  margin-bottom: 1rem;
+}
+
+.habit-group h3 {
+  margin: 0 0 0.6rem;
+}
+
+.habit-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 0.65rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.habit-card.done {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+}
+
+.habit-card.skip {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+}
+
+.habit-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.habit-name {
+  margin: 0;
+}
+
+.habit-meta,
+.habit-status,
+.habit-streak {
+  margin: 0;
+  color: var(--muted);
+}
+
+.habit-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.progress-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.progress-card h3 {
+  margin-top: 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 23%, #fff);
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.25s ease;
+}
+
+.goal-progress {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.goal-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.65rem;
+}
+
+.goal-item p {
+  margin: 0.15rem 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.monthly-heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.calendar-label {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.calendar-cell {
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 0.86rem;
+  background: var(--surface);
+}
+
+.calendar-cell.empty {
+  border-color: transparent;
+  background: transparent;
+}
+
+.level-0 {
+  background: color-mix(in srgb, var(--border) 45%, var(--surface));
+}
+
+.level-1 {
+  background: color-mix(in srgb, var(--primary) 26%, var(--surface));
+}
+
+.level-2 {
+  background: color-mix(in srgb, var(--primary) 44%, var(--surface));
+}
+
+.level-3 {
+  background: color-mix(in srgb, var(--primary) 63%, var(--surface));
+}
+
+@media (max-width: 980px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .progress-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .habit-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

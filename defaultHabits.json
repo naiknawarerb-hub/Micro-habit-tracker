@@ -1,0 +1,47 @@
+{
+  "categories": [
+    "Walking",
+    "Meditation",
+    "Breathing exercises",
+    "Study",
+    "Fitness"
+  ],
+  "habits": [
+    {
+      "id": "habit_walk_20",
+      "name": "Walk 20 minutes",
+      "category": "Walking",
+      "frequency": "daily",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "habit_meditate_10",
+      "name": "Meditate 10 minutes",
+      "category": "Meditation",
+      "frequency": "daily",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "habit_breathe_5",
+      "name": "Breathing exercise",
+      "category": "Breathing exercises",
+      "frequency": "daily",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "logs": {},
+  "activity": [],
+  "goals": {
+    "monthly": {
+      "habit_walk_20": 20,
+      "habit_meditate_10": 15
+    },
+    "yearly": {
+      "habit_walk_20": 300,
+      "habit_meditate_10": 200
+    }
+  },
+  "settings": {
+    "theme": "light"
+  }
+}
