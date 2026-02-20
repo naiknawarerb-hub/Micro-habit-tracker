@@ -1,4 +1,4 @@
-const CACHE_NAME = "habit-tracker-cache-v2";
+const CACHE_NAME = "habit-tracker-cache-v3";
 const REMINDER_CACHE = "habit-reminder-cache-v1";
 const REMINDER_KEY = "/__habit_reminders__.json";
 
@@ -7,14 +7,19 @@ const APP_ASSETS = [
   "index.html",
   "style.css",
   "script.js",
+  "app.js",
+  "tracker.js",
+  "ui.js",
+  "storage.js",
   "manifest.json",
-  "assets/icons/icon-16.png",
-  "assets/icons/icon-32.png",
-  "assets/icons/icon-180.png",
-  "assets/icons/icon-192.png",
-  "assets/icons/icon-512.png",
-  "assets/icons/icon.svg"
+  "icon-16.png",
+  "icon-32.png",
+  "icon-180.png",
+  "icon-192.png",
+  "icon-512.png",
+  "icon.svg"
 ];
+
 
 self.addEventListener("install", function (event) {
   event.waitUntil(
