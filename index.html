@@ -1,129 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#4caf50" />
-  <title>Raman&rsquo;s Micro Habit Tracker</title>
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon-16.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-180.png" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#4caf50" />
+
+<title>Raman’s Micro Habit Tracker</title>
+
+<!-- Icons (fixed paths) -->
+<link rel="icon" sizes="16x16" href="icon-16.png" />
+<link rel="icon" sizes="32x32" href="icon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css" />
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json" />
 </head>
+
 <body>
-  <div class="container">
-    <header class="card header">
-      <div class="brand-block">
-        <div class="brand-row">
-          <img src="assets/icons/icon-192.png" alt="Raman&rsquo;s Micro Habit Tracker logo" class="brand-logo" width="44" height="44" />
-          <h1>Raman&rsquo;s Micro Habit Tracker</h1>
-        </div>
-        <p class="tagline">One step everyday towards success</p>
-      </div>
-      <div class="header-actions">
-        <button id="installAppBtn" type="button" class="btn secondary" hidden>Install App</button>
-        <button id="notifyPermissionBtn" type="button" class="btn secondary">Enable Reminders</button>
-        <button id="exportBtn" type="button" class="btn secondary">Export JSON</button>
-        <button id="importBtn" type="button" class="btn secondary">Import JSON</button>
-        <input id="importInput" type="file" accept="application/json,.json" hidden />
-      </div>
-      <p id="installHint" class="install-hint" hidden></p>
-      <p id="notifyStatus" class="notify-status">Notifications: Not enabled</p>
-      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
-    </header>
 
-    <main class="grid">
-      <section class="card panel">
-        <h2>Add Category</h2>
-        <form id="categoryForm" class="form-grid">
-          <label for="categoryName">Category Name</label>
-          <input id="categoryName" type="text" placeholder="e.g. Fitness" required />
-          <button class="btn" type="submit">Add Category</button>
-        </form>
-        <ul id="categoryList" class="list"></ul>
-      </section>
+<div class="container">
 
-      <section class="card panel">
-        <h2>Add Habit</h2>
-        <form id="habitForm" class="form-grid">
-          <label for="habitName">Habit Name</label>
-          <input id="habitName" type="text" placeholder="e.g. Walk 20 mins" required />
+<header class="card header">
 
-          <label for="habitCategory">Category</label>
-          <select id="habitCategory" required></select>
+<div class="brand-block">
+<div class="brand-row">
 
-          <label for="habitFrequency">Frequency</label>
-          <select id="habitFrequency">
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-          </select>
+<img src="icon-192.png"
+alt="Habit Tracker Logo"
+class="brand-logo"
+width="44"
+height="44" />
 
-          <button id="saveHabitBtn" class="btn" type="submit">Save Habit</button>
-        </form>
-      </section>
+<h1>Raman’s Micro Habit Tracker</h1>
 
-      <section class="card panel">
-        <h2>Goal Tracker</h2>
-        <form id="goalForm" class="form-grid">
-          <label for="goalHabit">Habit</label>
-          <select id="goalHabit" required></select>
+</div>
+<p class="tagline">One step everyday towards success</p>
+</div>
 
-          <label for="goalType">Goal Type</label>
-          <select id="goalType">
-            <option value="monthly">Monthly</option>
-            <option value="yearly">Yearly</option>
-          </select>
+<div class="header-actions">
+<button id="installAppBtn" hidden>Install App</button>
+<button id="notifyPermissionBtn">Enable Reminders</button>
+<button id="exportBtn">Export JSON</button>
+<button id="importBtn">Import JSON</button>
+<input id="importInput" type="file" hidden />
+</div>
 
-          <label for="goalTarget">Target Count</label>
-          <input id="goalTarget" type="number" min="1" required />
+</header>
 
-          <button id="saveGoalBtn" class="btn" type="submit">Set Goal</button>
-        </form>
-        <div id="goalsView" class="goals-view"></div>
-      </section>
 
-      <section class="card panel span-3">
-        <div class="date-track-header">
-          <h2>Date-wise Habit Tracking</h2>
-          <div class="date-controls">
-            <span>Auto Tracking Date</span>
-            <strong id="currentDateLabel"></strong>
-          </div>
-        </div>
-        <div id="habitList"></div>
-      </section>
+<main class="grid">
 
-      <section class="card panel span-3">
-        <h2>Date Summary (Last 14 Days)</h2>
-        <div id="dateSummary" class="date-summary"></div>
-      </section>
+<section class="card panel">
+<h2>Add Category</h2>
 
-      <section class="card panel span-3">
-        <h2>Dashboard</h2>
-        <div class="dash-grid">
-          <article class="metric">
-            <h3>Selected Day</h3>
-            <p id="dailyText">0/0 (0%)</p>
-            <div class="bar"><span id="dailyBar"></span></div>
-          </article>
-          <article class="metric">
-            <h3>Monthly</h3>
-            <p id="monthlyText">0%</p>
-            <div class="bar"><span id="monthlyBar"></span></div>
-          </article>
-          <article class="metric">
-            <h3>Yearly</h3>
-            <p id="yearlyText">0%</p>
-            <div class="bar"><span id="yearlyBar"></span></div>
-          </article>
-        </div>
+<form id="categoryForm">
+<input id="categoryName" placeholder="Category name" required />
+<button>Add Category</button>
+</form>
 
-        <h3>Goal Insights</h3>
-        <div id="goalInsights" class="goal-insights"></div>
-      </section>
-    </main>
-  </div>
+<ul id="categoryList"></ul>
 
-  <script src="script.js"></script>
+</section>
+
+
+<section class="card panel">
+<h2>Add Habit</h2>
+
+<form id="habitForm">
+<input id="habitName" placeholder="Habit name" required />
+
+<select id="habitCategory"></select>
+
+<select id="habitFrequency">
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+</select>
+
+<button>Add Habit</button>
+</form>
+
+</section>
+
+</main>
+
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+<script src="app.js"></script>
+<script src="tracker.js"></script>
+<script src="ui.js"></script>
+<script src="storage.js"></script>
+
 </body>
 </html>
